@@ -1,3 +1,3 @@
 ﻿print "Enter your name",
 username = raw_input()
-print "Hello " + username + " how are you?" 
+print "Hello " + username + " how are you?"
