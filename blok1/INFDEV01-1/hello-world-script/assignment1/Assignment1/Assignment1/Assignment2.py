@@ -17,7 +17,7 @@ for x in range(0,usernameLenght):
                 print " ",
         else:
             print "*",
-
+          
         if y == usernameLenght -1:
             print "*",
     lastNumber = lastNumber - 1
