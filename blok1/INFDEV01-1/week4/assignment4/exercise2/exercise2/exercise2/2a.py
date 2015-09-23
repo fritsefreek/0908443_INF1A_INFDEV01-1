@@ -2,11 +2,17 @@
 player1 = raw_input("Player1, what is your name? \n")
 # Get the player1 choice
 player1Input = raw_input(player1 + " please chose from rock, paper, scissors \n")
+# Validate the user input
+while player1Input != "rock" and player1Input != "paper" and player1Input != "scissors" :
+    player1Input = raw_input(player1 + " please chose from rock, paper, scissors \n")
 
 # Get the name of the second player
 player2 = raw_input("Player2, what is your name? \n")
 # Get the player21 choice
 player2Input = raw_input(player2 + " please chose from rock, paper, scissors \n")
+# Validate the user input
+while player2Input != "rock" and player2Input != "paper" and player2Input != "scissors" :
+    player2Input = raw_input(player2 + " please chose from rock, paper, scissors \n")
 
 # Display the input for both users
 print "%s selected %s" % (player1, player1Input)
