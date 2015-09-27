@@ -30,11 +30,7 @@ difference = (player1InputNumber - player2InputNumber) % 5
 
 if difference == 0:
     print("It is a tie")
-elif difference == 1:
+elif difference <= 2:
     print("%s has won") % player1
-elif difference == 2:
-    print("%s has won") % player1
-elif difference == 3:
-    print("%s has won") % player2
 else:
     print("%s has won") % player2
