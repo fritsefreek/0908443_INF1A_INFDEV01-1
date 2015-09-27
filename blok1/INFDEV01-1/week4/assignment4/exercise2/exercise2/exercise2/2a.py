@@ -1,4 +1,4 @@
-# Get the name of the first player
+﻿# Get the name of the first player
 player1 = raw_input("Player1, what is your name? \n")
 # Get the player1 choice
 player1Input = raw_input(player1 + " please chose from rock, paper, scissors \n")
@@ -20,23 +20,19 @@ print "%s selected %s" % (player2, player2Input)
 
 # Check wich player has won
 output = "Couldn't find a winner"
-if player1Input == "rock" and player2Input == "rock" :
-    output = "Draw"
-elif player1Input == "rock" and player2Input == "paper" :
+if player1Input == "rock" and player2Input == "paper" :
     output = "%s won" %player2
 elif player1Input == "rock" and player2Input == "scissors" :
     output = "%s won" %player1
 elif player1Input == "paper" and player2Input == "rock" :
     output = "%s won" %player1
-elif player1Input == "paper" and player2Input == "paper" :
-    output = "Draw"
 elif player1Input == "paper" and player2Input == "scissors" :
     output = "%s won" %player2
 elif player1Input == "scissors" and player2Input == "rock" :
     output = "%s won" %player2
 elif player1Input == "scissors" and player2Input == "paper" :
     output = "%s won" %player1
-elif player1Input == "scissors" and player2Input == "scissors" :
+elif player1Input == player2Input :
     output = "Draw"
 else :
     output = "Error: couldn't find a winner"

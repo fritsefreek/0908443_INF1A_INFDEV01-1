@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>7350272b-4d2e-42f2-a6ad-af3e27397801</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>2a.py</StartupFile>
+    <StartupFile>2b.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="2a.py" />
+    <Compile Include="2b.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converter.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validater.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
