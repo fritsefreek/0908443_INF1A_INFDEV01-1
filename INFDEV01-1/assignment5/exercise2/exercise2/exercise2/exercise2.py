@@ -13,22 +13,22 @@
         oct = ord(character)
 
         # Give the variable points acoring to its type
-        # Special character
-        if oct < 48 or oct > 57 and oct < 65 or oct > 90 and oct < 97 or oct > 122 and oct < 128:
-            points += 2
-            specialCharacters += 1
         # Number
-        elif oct > 47 and oct < 58:
+        if character.isdigit():
             points += 2
             numbers += 1
         # Capalized character
-        elif oct > 64 and oct < 91:
+        elif character.isupper():
             points += 2
             CapitalizedCharacters += 1
         # Normal character
-        elif oct > 96 and oct < 123:
+        elif character.isalpha():
             points += 1
             normalCharacters += 1
+        # Special character
+        else:
+            points += 2
+            specialCharacters += 1
 
     # Calculate points based on the whole password
     # Gain extra points for the string lenght, increases exponentially
