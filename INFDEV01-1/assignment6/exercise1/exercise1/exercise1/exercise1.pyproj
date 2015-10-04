@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>27b374be-2864-46e1-8c75-838d0de30d9d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>circle.py</StartupFile>
+    <StartupFile>smiley.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -33,6 +33,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="rectangle.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="smiley.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
