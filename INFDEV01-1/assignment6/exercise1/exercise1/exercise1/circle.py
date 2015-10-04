@@ -1,3 +1,3 @@
-int = int(raw_input("Please fill in a number: "))
-figure = ""
+﻿int = int(raw_input("Please fill in a number: "))
+figure = "test"
 
