@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>178d91d9-b9d0-451e-bdad-119388bc52c0</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>exersise3.py</StartupFile>
+    <StartupFile>exercise3.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="exersise3.py" />
+    <Compile Include="exercise3.py" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
