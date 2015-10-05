@@ -37,7 +37,7 @@ def Program():
     #                  PUT YOUR CODE BELOW
     #---------------------------------------------------------------------
     _forwardSpeed = 0.5
-    _rotateSpeed = 1.5
+    _rotateSpeed = 2.5
     _collors = ['Black', 'Green', 'Blue', 'Red']
 
     userInput = get()
@@ -59,7 +59,7 @@ def Program():
 
     # Random collor -->c
     if userInput == 99:
-        change_color_to( random.choice(_collors))
+        change_color_to(random.choice(_collors))
 
     # Stop pen when user releases the keys
     forward(0)
