@@ -5,16 +5,15 @@ newString = ""
 for character in string:
     initalOrdValue = ord(character)
     
-    if initalOrdValue > 96 and initalOrdValue < 123 or initalOrdValue > 64 and initalOrdValue < 91:
+    if character.isalpha():
         # Lower
-        if initalOrdValue > 96 and initalOrdValue < 123:
+        if character.islower():
             if ord(character) + int > 122:
                 character = chr(96 + int) 
             else:
-                character = chr(122 + int) 
-    
+                character = chr(123 + int)
         # Capital
-        if initalOrdValue > 64 and initalOrdValue < 91:
+        else:
             if ord(character) + int > 90:
                 character = chr(64 + int) 
             else:
