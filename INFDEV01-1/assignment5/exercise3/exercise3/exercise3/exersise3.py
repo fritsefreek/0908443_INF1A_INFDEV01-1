@@ -9,16 +9,16 @@ for character in string:
         # Lower
         if initalOrdValue > 96 and initalOrdValue < 123:
             if ord(character) + int > 122:
-                character = chr(int + 96) 
+                character = chr(96 + int) 
             else:
-                character = chr(121 - int) 
+                character = chr(122 + int) 
     
         # Capital
         if initalOrdValue > 64 and initalOrdValue < 91:
             if ord(character) + int > 90:
-                character = chr(int + 64) 
+                character = chr(64 + int) 
             else:
-                character = chr(89 - int) 
+                character = chr(90 + int) 
 
     newString += character
 print(newString)
