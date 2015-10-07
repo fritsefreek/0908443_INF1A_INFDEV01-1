@@ -1,8 +1,8 @@
-int = int(raw_input("Please fill in a number: "))
+﻿int = int(raw_input("Please fill in a number: "))
 figure = ""
 
 for i in range(0, int):
-    for i in range(1, int):
+    for x in range(0, int):
         figure += "*"
-    figure += "* \n"
+    figure += "\n"
 print(figure)

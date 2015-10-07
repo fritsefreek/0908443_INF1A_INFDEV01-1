@@ -4,26 +4,31 @@ string = raw_input("Please fill in a string: ")
 int = int(raw_input("Please fill in an int: "))
 newString = ""
 
-
 if abs(int) > 26:
-    int = int % 26 + 1
+    int = int % 26
 
 for character in string:
-    initalOrdValue = ord(character)
-    
     if character.isalpha():
+
+        number = ord(character) + int
+
         # Lower
         if character.islower():
-            if ord("a") + int < ord("a"):
-                number = ord("z") + (int + 1)
-            else:
-                number = ord("a") + (int - 1) 
+            if number < ord("a"):
+                number += 26
+                
+            elif number > ord("z"):
+                number -= 26        
         # Capital
         else:
-            if ord("A") + int < ord("A"):
-                number = ord("Z") + (int + 1)
-            else:
-                number = ord("A") + (int - 1) 
+            if number < ord("A"):
+                number += 26
+                
+            elif number > ord("Z"):
+                number -= 26  
 
-    newString += chr(number)
+        newString += chr(number)
+    else:
+        newString += character
+
 print(newString)

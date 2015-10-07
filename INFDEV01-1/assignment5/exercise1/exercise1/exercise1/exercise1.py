@@ -5,4 +5,5 @@ reversedString = ""
 while characters > 0:
     reversedString += string[characters -1]
     characters -= 1
+
 print(reversedString)

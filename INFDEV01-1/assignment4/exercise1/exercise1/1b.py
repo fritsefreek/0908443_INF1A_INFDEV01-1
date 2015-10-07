@@ -6,7 +6,7 @@ while celcius < -273.15 :
     celcius = float(input("Please fill in a number that is higher then -273.15 "))
 
 
-# Convert the value to Kelvin and round it with a precision of 2 decimals
+# Convert the value to Kelvin
 kelvin = celcius + 273.15
 
 # Print the kelvin value

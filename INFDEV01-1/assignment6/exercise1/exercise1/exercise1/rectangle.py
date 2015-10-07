@@ -1,4 +1,4 @@
-int = int(raw_input("Please fill in a number: "))
+﻿int = int(raw_input("Please fill in a number: "))
 figure = ""
 
 for i in range(0, int):
