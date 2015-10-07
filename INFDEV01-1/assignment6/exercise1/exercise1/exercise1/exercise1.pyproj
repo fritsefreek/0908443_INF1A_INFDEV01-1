@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>27b374be-2864-46e1-8c75-838d0de30d9d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>isoceles.py</StartupFile>
+    <StartupFile>fullSquare.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
