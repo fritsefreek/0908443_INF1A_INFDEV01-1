@@ -52,8 +52,8 @@ def Main(cars):
       _board.Value.Draw(screen, True)
       _board = _board.Tail
 
-
     cars = Update(cars)
+    cars = RemoveParkedCars(cars)
     Draw(cars, screen)
 
     pygame.display.flip()
