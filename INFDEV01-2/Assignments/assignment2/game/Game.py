@@ -16,27 +16,17 @@ entry_road, entry_rivers, bridges = build_scene(size, offset)
 boat_texture = pygame.image.load("Content/tanker.png").convert_alpha()
 car_texture = pygame.image.load("Content/car.png").convert_alpha()
 cars = Empty
-
-def Update(cars):
-    updatedCars = Empty
-    while cars.IsEmpty is False:
-        updatedCars = UpdateCars(cars, updatedCars)
-        cars = cars.Tail
-    return updatedCars
+boats = Empty
 
 
-def Draw(cars, screen):
-    while not cars.IsEmpty:
-        DrawCars(cars, screen, offset, car_texture)
-        cars = cars.Tail
 
-
-def Main(cars):
+def Main(cars, boats):
   counter = 0
   while True:    
     counter += 1
     if counter == 5:
         cars = Node(Car(entry_road.Value), cars)
+        boats = Node(Boat(entry_rivers.Value), boats)
         counter = 0
     screen.fill(green)
 
@@ -52,11 +42,13 @@ def Main(cars):
       _board.Value.Draw(screen, True)
       _board = _board.Tail
 
-    cars = Update(cars)
-    cars = RemoveParkedCars(cars)
-    Draw(cars, screen)
+    cars = RemoveParkedCars(UpdateCars(cars))
+    DrawCars(cars, screen, offset, car_texture)
+
+    boats = RemoveParkedBoats(UpdateBoats(boats))
+    DrawBoats(boats, screen, offset, boat_texture)
 
     pygame.display.flip()
     time.sleep(0.2)
     
-Main(cars)
+Main(cars, boats)
