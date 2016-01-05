@@ -29,14 +29,18 @@ def UpdateBoats(boats):
         else:
             while(newPosition == False):
                 randomNumber = random.randint(1, 4)
-                if(randomNumber == 1 and boats.Value.Tile.Up != None and boats.Value.Tile.Up.River == True or boats.Value.Tile.Harbor == True):
+                if(randomNumber == 1 and boats.Value.Tile.Up != None):
+                   if(boats.Value.Tile.Up.River == True or boats.Value.Tile.Up.Harbor == True or boats.Value.Tile.Up.Bridge == True):
                     newPosition = boats.Value.Tile.Up
-                elif(randomNumber == 2 and boats.Value.Tile.Right != None and boats.Value.Tile.Right.River == True or boats.Value.Tile.Harbor == True):
-                    newPosition = boats.Value.Tile.Right
-                elif(randomNumber == 3 and boats.Value.Tile.Down != None and boats.Value.Tile.Down.River == True or boats.Value.Tile.Harbor == True):
-                    newPosition = boats.Value.Tile.Down
-                elif(randomNumber == 4 and boats.Value.Tile.Left != None and boats.Value.Tile.Left.River == True or boats.Value.Tile.Harbor == True):
-                    newPosition = boats.Value.Tile.Left
+                elif(randomNumber == 2 and boats.Value.Tile.Right != None):
+                    if(boats.Value.Tile.Right.River == True or boats.Value.Tile.Right.Harbor == True or boats.Value.Tile.Right.Bridge == True):
+                        newPosition = boats.Value.Tile.Right
+                elif(randomNumber == 3 and boats.Value.Tile.Down != None):
+                    if(boats.Value.Tile.Down.River == True or boats.Value.Tile.Down.Harbor == True or boats.Value.Tile.Down.Bridge == True):
+                        newPosition = boats.Value.Tile.Down
+                elif(randomNumber == 4 and boats.Value.Tile.Left != None):
+                    if(boats.Value.Tile.Left.River == True or boats.Value.Tile.Left.Harbor == True or boats.Value.Tile.Left.Bridge == True):
+                        newPosition = boats.Value.Tile.Left
                 else:
                     newPosition = False
 
