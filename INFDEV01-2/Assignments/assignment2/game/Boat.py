@@ -4,19 +4,24 @@ from Node import *
 from Common import *
 
 class Boat:
-    def __init__(self, tile, canBeRemoved=False):
+    def __init__(self, tile, texture, canBeRemoved=False):
         self.Tile = tile
+        self.Texture = texture
         self.CanBeRemoved = canBeRemoved
 
+    def Draw(self, entity, screen, offset):
+        _width = int(offset / 3)
+        screen.blit(pygame.transform.scale(self.Texture, (_width, _width)),
+            (_width + entity.Value.Tile.Position.X * offset,
+            _width + entity.Value.Tile.Position.Y * offset))
+
+    def CanBeRemoved(self):
+        return False
+
+    def Update(self):
+        return self
 
 
-def DrawBoats(boats, screen, offset, boat_texture):
-    _width = int(offset / 3)
-    while not boats.IsEmpty:
-        screen.blit(pygame.transform.scale(boat_texture, (_width, _width)),
-            (_width + boats.Value.Tile.Position.X * offset,
-            _width + boats.Value.Tile.Position.Y * offset))
-        boats = boats.Tail
 
 
 def UpdateBoats(boats):

@@ -19,7 +19,12 @@ cars = Empty
 boats = Empty
 
 
+def DrawEntities(entities, screen, offset):
+    while not entities.IsEmpty:
+        entities.Value.Draw(screen, offset)
+        entities = boats.Tail
 
+        
 def Main(cars, boats):
   counter = 0
   while True:    
