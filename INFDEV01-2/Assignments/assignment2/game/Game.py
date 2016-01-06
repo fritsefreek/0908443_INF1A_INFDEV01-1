@@ -15,8 +15,7 @@ size = 10
 entry_road, entry_rivers, bridges = build_scene(size, offset)
 boat_texture = pygame.image.load("Content/tanker.png").convert_alpha()
 car_texture = pygame.image.load("Content/car.png").convert_alpha()
-cars = Empty
-boats = Empty
+entities = Empty
 
 
 def RemoveEntities(entities):
@@ -35,21 +34,20 @@ def UpdateEntities(entities):
         entities = entities.Tail
     return updatedEntities
 
+
 def DrawEntities(entities, screen, offset):
     while not entities.IsEmpty:
         entities.Value.Draw(screen, offset)
         entities = entities.Tail
 
 
-
-
-def Main(cars, boats):
+def Main(entities):
   counter = 0
   while True:    
     counter += 1
     if counter == 5:
-        cars = Node(Car(entry_road.Value), cars)
-        boats = Node(Boat(entry_rivers.Value, boat_texture), boats)
+        entities = Node(Car(entry_road.Value, car_texture), entities)
+        entities = Node(Boat(entry_rivers.Value, boat_texture),  entities)
         counter = 0
     screen.fill(green)
 
@@ -65,15 +63,11 @@ def Main(cars, boats):
       _board.Value.Draw(screen, True)
       _board = _board.Tail
 
-    cars = RemoveParkedCars(UpdateCars(cars))
-    DrawCars(cars, screen, offset, car_texture)
-
-
-    boats = UpdateEntities(boats)
-    boats = RemoveEntities(boats)
-    DrawEntities(boats, screen, offset)
+    entities = UpdateEntities(entities)
+    entities = RemoveEntities(entities)
+    DrawEntities(entities, screen, offset)
 
     pygame.display.flip()
     time.sleep(0.2)
     
-Main(cars, boats)
+Main(entities)
