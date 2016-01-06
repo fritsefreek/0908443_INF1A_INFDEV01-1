@@ -19,19 +19,37 @@ cars = Empty
 boats = Empty
 
 
+def RemoveEntities(entities):
+    updatedEntities = Empty
+    while not entities.IsEmpty:
+        if entities.Value.CanBeRemoved == False:
+            updatedEntities = Node(entities.Value, updatedEntities)
+        entities = entities.Tail
+    return updatedEntities
+
+
+def UpdateEntities(entities):
+    updatedEntities = Empty
+    while not entities.IsEmpty:
+        updatedEntities = Node(entities.Value.Update(), updatedEntities)
+        entities = entities.Tail
+    return updatedEntities
+
 def DrawEntities(entities, screen, offset):
     while not entities.IsEmpty:
         entities.Value.Draw(screen, offset)
-        entities = boats.Tail
+        entities = entities.Tail
 
-        
+
+
+
 def Main(cars, boats):
   counter = 0
   while True:    
     counter += 1
     if counter == 5:
         cars = Node(Car(entry_road.Value), cars)
-        boats = Node(Boat(entry_rivers.Value), boats)
+        boats = Node(Boat(entry_rivers.Value, boat_texture), boats)
         counter = 0
     screen.fill(green)
 
@@ -50,8 +68,10 @@ def Main(cars, boats):
     cars = RemoveParkedCars(UpdateCars(cars))
     DrawCars(cars, screen, offset, car_texture)
 
-    boats = RemoveParkedBoats(UpdateBoats(boats))
-    DrawBoats(boats, screen, offset, boat_texture)
+
+    boats = UpdateEntities(boats)
+    boats = RemoveEntities(boats)
+    DrawEntities(boats, screen, offset)
 
     pygame.display.flip()
     time.sleep(0.2)
