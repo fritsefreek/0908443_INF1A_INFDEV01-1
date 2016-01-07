@@ -23,10 +23,3 @@ def map(list, func):
         return Empty
     else:
         return Node(func(list.Value), map(list.Tail, func))
-
-
-def iterate(list, func):
-    if(list.IsEmpty):
-        return ""
-    else:
-        return Node(func(list.Value), iterate(list.Tail, func))
