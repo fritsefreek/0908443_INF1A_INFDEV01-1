@@ -1,10 +1,14 @@
-﻿import time
+﻿from __future__ import print_function
+import time
 from threading import Thread
 import os, pygame
 import time
 from Tile import *
 from Node import *
 from Boat import *
+from HOFs import *
+
+
 pygame.init()
 size = width, height = 600, 600
 white = 255, 255, 255
@@ -18,27 +22,12 @@ car_texture = pygame.image.load("Content/car.png").convert_alpha()
 entities = Empty
 
 
-def RemoveEntities(entities):
-    updatedEntities = Empty
-    while not entities.IsEmpty:
-        if entities.Value.CanBeRemoved == False:
-            updatedEntities = Node(entities.Value, updatedEntities)
-        entities = entities.Tail
-    return updatedEntities
-
-
 def UpdateEntities(entities):
-    updatedEntities = Empty
-    while not entities.IsEmpty:
-        updatedEntities = Node(entities.Value.Update(), updatedEntities)
-        entities = entities.Tail
-    return updatedEntities
+    return map(entities, lambda e: e.Update())
 
 
 def DrawEntities(entities, screen, offset):
-    while not entities.IsEmpty:
-        entities.Value.Draw(screen, offset)
-        entities = entities.Tail
+    return map(entities, lambda e: e.Draw(screen, offset))
 
 
 def Main(entities):
@@ -63,8 +52,9 @@ def Main(entities):
       _board.Value.Draw(screen, True)
       _board = _board.Tail
 
+
     entities = UpdateEntities(entities)
-    entities = RemoveEntities(entities)
+    entities = filter(entities, lambda e : not e.CanBeRemoved)
     DrawEntities(entities, screen, offset)
 
     pygame.display.flip()
