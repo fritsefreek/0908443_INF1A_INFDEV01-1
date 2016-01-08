@@ -1,5 +1,5 @@
-from Node import *
 from Car import *
+
 
 def fold(list, func, base):
     if(list.IsEmpty):
@@ -23,3 +23,9 @@ def map(list, func):
         return Empty
     else:
         return Node(func(list.Value), map(list.Tail, func))
+
+
+def iterrate(list, func):
+    if(list.IsEmpty != True):
+        func(list.Value)
+        return iterrate(list.Tail, func)

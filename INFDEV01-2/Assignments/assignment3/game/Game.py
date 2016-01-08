@@ -27,7 +27,8 @@ def UpdateEntities(entities):
 
 
 def DrawEntities(entities, screen, offset):
-    return map(entities, lambda e: e.Draw(screen, offset))
+    iterrate(entities, lambda e: e.Draw(screen, offset))
+    #return map(entities, lambda e: e.Draw(screen, offset))
 
 
 def Main(entities):
