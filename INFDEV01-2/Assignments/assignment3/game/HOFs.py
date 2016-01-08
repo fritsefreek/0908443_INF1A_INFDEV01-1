@@ -25,7 +25,7 @@ def map(list, func):
         return Node(func(list.Value), map(list.Tail, func))
 
 
-def iterrate(list, func):
-    if(list.IsEmpty != True):
+def iterate(list, func):
+    if not list.IsEmpty:
         func(list.Value)
-        return iterrate(list.Tail, func)
+        iterate(list.Tail, func)

@@ -27,9 +27,8 @@ def UpdateEntities(entities):
 
 
 def DrawEntities(entities, screen, offset):
-    iterrate(entities, lambda e: e.Draw(screen, offset))
-    #return map(entities, lambda e: e.Draw(screen, offset))
-
+    iterate(entities, lambda e: e.Draw(screen, offset))
+    
 
 def Main(entities):
   counter = 0
@@ -53,9 +52,7 @@ def Main(entities):
       _board.Value.Draw(screen, True)
       _board = _board.Tail
 
-
-    entities = UpdateEntities(entities)
-    entities = filter(entities, lambda e : not e.CanBeRemoved)
+    entities = UpdateEntities(filter(entities, lambda e : not e.CanBeRemoved))
     DrawEntities(entities, screen, offset)
 
     pygame.display.flip()
