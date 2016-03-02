@@ -8,65 +8,61 @@ namespace Chapter1
 		{
 			Console.WriteLine ("Execute Exersise8");
 
-			RemcoCounter c1 = new RemcoCounter ();
-			RemcoCounter c2 = new RemcoCounter ();
+			UserStory userStory1 = new UserStory ();
+			userStory1.hours = 10;
+			userStory1.description = "Dit is een test1";
+			Console.WriteLine(userStory1.ToString());
 
-			c1.SetOnTarget(4, counter => c1.Reset());
+			UserStory userStory2 = new UserStory ();
+			userStory2.hours = 20;
+			userStory2.description = "Dit is een test2";
 
-			for(int i=0;i<100;i++){
-				c1.Tick ();
-				Console.WriteLine(c1);
-			}
+			UserStory userStory3 = new UserStory ();
+			userStory3.hours = 30;
+			userStory3.description = "Dit is een test3";
 
-			c1.Tick ();
-			c1.Tick ();
-			c1.Tick ();
-			c1.Tick ();
-			c2.Tick ();
-			c2.Reset ();
-			c2.Tick ();	
-
-			RemcoCounter sumCounter = c1 + c2;
-			Console.Write (sumCounter);
-		}
-	}
-
-	public class RemcoCounter
-	{
-		int counter = 0;
-		int target = int.MaxValue;
-		Action<int> onTarget;
-		public RemcoCounter() {
-			
-		}
-
-		RemcoCounter(int ticks) {
-			counter = ticks;
-
-		}
-
-		public void Reset() {
-			this.counter = 0;
-		}
-
-		public void Tick() {
-			this.counter++;
-			if (counter >= target && onTarget != null) {
-				this.onTarget (counter);
-			}
-		}
-
-		public static RemcoCounter operator +(RemcoCounter c1, RemcoCounter c2) {
-			return new RemcoCounter (c1.counter + c2.counter);
-		}
-
-		public void SetOnTarget(int target, Action<int> onTarget) {
-			this.onTarget = onTarget;
-			this.target = target;
 				
+			Sprint sprint1 = new Sprint ();
+			sprint1.userStories = new UserStory[]{ userStory1, userStory2, userStory3 };
 
+
+			Console.WriteLine (sprint1.ToString());
+		}
+	}
+
+
+	public class UserStory
+	{
+		public int hours { get; set; }
+		public string description { get; set; }
+
+
+		public override string ToString()
+		{
+			return "Description: " + this.description;
 		}
 
-		public override string ToString () => counter.ToString();
 	}
+
+
+	public class Sprint
+	{
+		public UserStory[] userStories;
+
+		public int totalHours()
+		{
+			int sum = 0;
+			foreach (UserStory userStory in userStories) {
+				sum += userStory.hours;
+			}
+			return sum;
+		}
+
+		public override string ToString()
+		{
+			return "Aantal uur:  " + this.totalHours();
+		}
+
+	}
+
 }

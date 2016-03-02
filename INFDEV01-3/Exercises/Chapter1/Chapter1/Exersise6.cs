@@ -30,7 +30,7 @@ namespace Chapter1
 		public int Sum() {
 			return this.Sum (this.start, this.end);
 		}
-			
+
 		private int Sum(int start, int end){
 			if (start <= end) {
 				return this.Sum(start+1, end) + start;

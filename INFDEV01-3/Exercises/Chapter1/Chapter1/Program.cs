@@ -6,7 +6,7 @@ namespace Chapter1
 	{
 		public static void Main (string[] args)
 		{
-			new Exersise6();
+			new Exersise8();
 		}
 	}
 }
