@@ -5,7 +5,7 @@ def fold(list, func, base):
     if(list.IsEmpty):
         return base
     else:
-        return func(list.Head, fold(list.Tail, func, base))
+        return func(list.Value, fold(list.Tail, func, base))
 
 
 def filter(list, p):

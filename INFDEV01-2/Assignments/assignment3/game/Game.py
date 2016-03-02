@@ -1,5 +1,4 @@
-﻿from __future__ import print_function
-import time
+﻿import time
 from threading import Thread
 import os, pygame
 import time
@@ -28,7 +27,7 @@ def UpdateEntities(entities):
 
 def DrawEntities(entities, screen, offset):
     iterate(entities, lambda e: e.Draw(screen, offset))
-    
+
 
 def Main(entities):
   counter = 0
