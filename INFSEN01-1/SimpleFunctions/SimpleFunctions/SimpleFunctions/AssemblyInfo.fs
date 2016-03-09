@@ -1,8 +1,8 @@
-﻿namespace Test
+﻿namespace SimpleFunctions
 open System.Reflection
 open System.Runtime.CompilerServices
 
-[<assembly: AssemblyTitle("Test")>]
+[<assembly: AssemblyTitle("SimpleFunctions")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
