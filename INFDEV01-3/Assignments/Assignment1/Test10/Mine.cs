@@ -9,8 +9,20 @@ namespace AssignmentComplete
 		private Vector2 _posisiton;
 		private Texture2D _truck, _mine, _mineCard, _oreContainer;
 
-		#region IFactory implementation
 
+		#region IFactory implementation
+		public Texture2D TruckTexture {
+			get {
+				return this._truck;
+			}
+		}
+
+		public Texture2D ContainerTexture {
+			get {
+				return this._oreContainer;
+			}
+		}
+			
 		public ITruck GetReadyTruck ()
 		{
 			throw new NotImplementedException ();

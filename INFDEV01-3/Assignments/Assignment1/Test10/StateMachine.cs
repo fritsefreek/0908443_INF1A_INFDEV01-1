@@ -109,7 +109,7 @@ namespace AssignmentComplete
     public Wait(Func<bool> condition)
     {
       this.condition = condition;
-    }
+    }	
     Func<bool> condition;
     bool busy = true;
     public bool Busy

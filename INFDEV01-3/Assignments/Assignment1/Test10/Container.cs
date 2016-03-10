@@ -12,25 +12,53 @@ namespace AssignmentComplete
 		private int _currentAmount;
 		private int _maxCapacity;
 		private Vector2 _position;
+		private Texture2D _texture;
 
-		public Container(int currentAmount, int maxCapacity, Vector2 position)
+		#region IContainer implementation
+
+		public bool AddContent (int amount)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public int CurrentAmount {
+			get {
+				return _currentAmount;
+			}
+		}
+
+		public int MaxCapacity {
+			get {
+				return _maxCapacity;
+			}
+		}
+
+		public Vector2 Position {
+			get {
+				return _position;
+			}
+			set {
+				this._position = value;
+			}
+		}
+
+		#endregion
+
+		#region IDrawable implementation
+
+		public void Draw (SpriteBatch spriteBatch)
+		{
+			spriteBatch.Draw (this._texture, this._position, null, Color.White, 0f, Vector2.Zero, new Vector2(0.3f, 0.3f), SpriteEffects.None, 0f);
+		}
+
+		#endregion
+
+		public Container(int currentAmount, int maxCapacity, Vector2 position, Texture2D texture)
 		{
 			_currentAmount = currentAmount;
 			_maxCapacity = maxCapacity;
 			_position = position;
-		}
-
-		public int CurrentAmount { get; }
-		public int MaxCapacity { get; }
-		public Vector2 Position { get; set;}
-
-		public bool AddContent(int amount) {
-			return true;
-		}
-
-		public void Draw(SpriteBatch sprite)
-		{
-		 	Draw(sprite);
+			_texture = texture;
 		}
 
 	}

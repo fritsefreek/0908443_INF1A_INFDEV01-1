@@ -12,5 +12,7 @@ namespace AssignmentComplete
     Vector2 Position { get; }
     List<IContainer> ProductsToShip { get; }
     ITruck GetReadyTruck();
+	Texture2D TruckTexture { get; }
+	Texture2D ContainerTexture { get; }
   }
 }

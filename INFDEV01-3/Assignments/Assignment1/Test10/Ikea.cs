@@ -10,6 +10,17 @@ namespace AssignmentComplete
 		private Texture2D _truck, _ikea, _productBox, _productContainer;
 
 		#region IFactory implementation
+		public Texture2D TruckTexture {
+			get {
+				return this._truck;
+			}
+		}
+
+		public Texture2D ContainerTexture {
+			get {
+				return this._productContainer;
+			}
+		}
 
 		public ITruck GetReadyTruck ()
 		{
@@ -61,4 +72,3 @@ namespace AssignmentComplete
 		}
 	}
 }
-

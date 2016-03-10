@@ -59,6 +59,7 @@
     <Compile Include="Truck.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Ikea.cs" />
+    <Compile Include="AddTruckFromFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
