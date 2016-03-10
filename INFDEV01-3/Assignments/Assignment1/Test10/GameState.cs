@@ -19,8 +19,8 @@ namespace AssignmentComplete
     public GameState(Texture2D background, Texture2D mine_cart, Texture2D product_box, Texture2D volvo, Texture2D mine, Texture2D ikea, Texture2D ore_container, Texture2D product_container)
     {
       this.background = background;
-      factory1 = null; //new Mine(new Vector2(100, 70), volvo, mine, mine_cart, ore_container);
-      factory2 = null; //new Ikea(new Vector2(600, 340), volvo, ikea, product_box, product_container);
+      factory1 = new Mine(new Vector2(20, 35), volvo, mine, mine_cart, ore_container);
+      factory2 = new Ikea(new Vector2(600, 340), volvo, ikea, product_box, product_container);
 
       trucks = new List<ITruck>();
 
