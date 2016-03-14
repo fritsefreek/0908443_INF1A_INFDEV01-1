@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace AssignmentComplete
 {
@@ -8,6 +9,7 @@ namespace AssignmentComplete
 	{
 		private Vector2 _posisiton;
 		private Texture2D _truck, _mine, _mineCard, _oreContainer;
+		private List<IContainer> _products;
 
 
 		#region IFactory implementation
@@ -30,13 +32,13 @@ namespace AssignmentComplete
 
 		public Microsoft.Xna.Framework.Vector2 Position {
 			get {
-				throw new NotImplementedException ();
+				return this._posisiton;
 			}
 		}
 
 		public System.Collections.Generic.List<IContainer> ProductsToShip {
 			get {
-				throw new NotImplementedException ();
+				return this._products;
 			}
 		}
 

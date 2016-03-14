@@ -18,18 +18,18 @@ namespace AssignmentComplete
 		public AddTruckFromFactory (IFactory factory, List<ITruck> truck)
 		{
 			ITruck _truck;
+			IContainer _container;
 			if (factory.GetType() == typeof(Mine)) {
-				_truck = new Truck (new Vector2 (400, 50), new Vector2 (10, 10), factory.TruckTexture);
+				_truck = new Truck (new Vector2 (400, 50), new Vector2 (10, 0), factory.TruckTexture);
+				_container = new Container (100, 200, new Vector2(400, 40), factory.ContainerTexture);
 			} else {
-			 	_truck = new Truck (new Vector2 (200, 360), new Vector2 (-10, 10), factory.TruckTexture);
+			 	_truck = new Truck (new Vector2 (200, 360), new Vector2 (-10, 0), factory.TruckTexture);
+				_container = new Container (100, 200, new Vector2(260, 340), factory.ContainerTexture);
 			}
-
-			IContainer _container = new Container (100, 200, _truck.Position, factory.ContainerTexture);
+				
 			_truck.AddContainer (_container);
 			truck.Add (_truck);
 		}
 
-
 	}
 }
-

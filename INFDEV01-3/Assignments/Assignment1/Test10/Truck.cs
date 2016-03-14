@@ -57,7 +57,7 @@ namespace AssignmentComplete
 		{
 			this._posisiton.X = this._posisiton.X + this._velocity.X * dt;
 			Vector2 positionContainer = this._container.Position;
-			this._container.Position = new Vector2(this._posisiton.X + this._velocity.X * dt, positionContainer.Y);
+			this._container.Position = new Vector2(this._container.Position.X + this._velocity.X * dt, positionContainer.Y);
 		}
 
 		#endregion
@@ -66,7 +66,14 @@ namespace AssignmentComplete
 
 		public void Draw (SpriteBatch spriteBatch)
 		{
-			spriteBatch.Draw (this._texture, this._posisiton, null, Color.White, 0f, Vector2.Zero, new Vector2(0.3f, 0.3f), SpriteEffects.None, 0f);
+			SpriteEffects spriteEffect;
+			if (this._velocity.X < 0) {
+				spriteEffect = SpriteEffects.FlipHorizontally;
+			} else {
+				spriteEffect = SpriteEffects.None;
+			}
+
+			spriteBatch.Draw (this._texture, this._posisiton, null, Color.White, 0f, Vector2.Zero, new Vector2(0.3f, 0.3f), spriteEffect, 0f);
 			this._container.Draw (spriteBatch);
 		}
 
