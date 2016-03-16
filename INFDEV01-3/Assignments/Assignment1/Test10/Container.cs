@@ -18,7 +18,12 @@ namespace AssignmentComplete
 
 		public bool AddContent (int amount)
 		{
-			throw new NotImplementedException ();
+			if (this._currentAmount + amount > this._maxCapacity) {
+				return false;
+			} else {
+				this._currentAmount += amount;
+				return true;
+			}
 		}
 
 		public int CurrentAmount {

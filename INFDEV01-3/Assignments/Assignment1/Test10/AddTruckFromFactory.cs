@@ -7,28 +7,37 @@ namespace AssignmentComplete
 	public class AddTruckFromFactory : IAction
 	{
 		#region IAction implementation
+		private IFactory _factory;
+		private List<ITruck> _truck;
+
 
 		public void Run ()
 		{
-			System.Console.Write ("test");
+			IContainer _container;
+			ITruck _truck;
+
+			if (this._factory.ProductsToShip.Count >= 100) {
+				this._factory.ProductsToShip = new List<IContainer>();
+
+				if (this._factory.GetType () == typeof(Mine)) {
+					_truck = new Truck (new Vector2 (200, 50), new Vector2 (50, 0), this._factory.TruckTexture);
+					_container = new Container (100, 200, new Vector2 (200, 40), this._factory.ContainerTexture);
+				} else {
+					_truck = new Truck (new Vector2 (420, 320), new Vector2 (-50, 0), this._factory.TruckTexture);
+					_container = new Container (100, 200, new Vector2 (480, 310), this._factory.ContainerTexture);
+				}
+
+				_truck.AddContainer (_container);
+				this._truck.Add (_truck);
+			}
 		}
 
 		#endregion
 
 		public AddTruckFromFactory (IFactory factory, List<ITruck> truck)
 		{
-			ITruck _truck;
-			IContainer _container;
-			if (factory.GetType() == typeof(Mine)) {
-				_truck = new Truck (new Vector2 (400, 50), new Vector2 (10, 0), factory.TruckTexture);
-				_container = new Container (100, 200, new Vector2(400, 40), factory.ContainerTexture);
-			} else {
-			 	_truck = new Truck (new Vector2 (200, 360), new Vector2 (-10, 0), factory.TruckTexture);
-				_container = new Container (100, 200, new Vector2(260, 340), factory.ContainerTexture);
-			}
-				
-			_truck.AddContainer (_container);
-			truck.Add (_truck);
+			this._factory = factory;
+			this._truck = truck;
 		}
 
 	}

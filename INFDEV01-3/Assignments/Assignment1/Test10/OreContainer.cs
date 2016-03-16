@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace AssignmentComplete
 {
-	public class Ore : IContainer
+	public class OreContainer : IContainer
 	{
 		private Texture2D _texture;
 		private Vector2 _position;
@@ -18,6 +18,7 @@ namespace AssignmentComplete
 			if (this._currentAmount + amount > this._maxCapacity) {
 				return false;
 			} else {
+				this._currentAmount += amount;
 				return true;
 			}
 		}
@@ -49,14 +50,14 @@ namespace AssignmentComplete
 
 		public void Draw (SpriteBatch spriteBatch)
 		{
-			throw new NotImplementedException ();
+			spriteBatch.Draw (this._texture, this._position, null, Color.White, 0f, Vector2.Zero, new Vector2 (0.2f, 0.2f), SpriteEffects.None, 0f);
 		}
 
 		#endregion
 
 	
 
-		public Ore (Texture2D texture, Vector2 position, int currentAmount, int maxCapacity)
+		public OreContainer (Texture2D texture, Vector2 position, int currentAmount, int maxCapacity)
 		{
 			this._texture = texture;
 			this._position = position;

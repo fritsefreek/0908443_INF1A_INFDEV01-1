@@ -25,11 +25,8 @@ namespace AssignmentComplete
       trucks = new List<ITruck>();
 
       this.processes = new List<IStateMachine>();
-
-      this.processes.Add(new Repeat(new Call(new AddTruckFromFactory(factory1, trucks))));
+	  this.processes.Add(new Repeat(new Call(new AddTruckFromFactory(factory1, trucks))));
       this.processes.Add(new Repeat(new Call(new AddTruckFromFactory(factory2, trucks))));
-
-
     }
     public void Update(float dt)
     {

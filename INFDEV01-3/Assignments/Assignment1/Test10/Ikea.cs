@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace AssignmentComplete
 {
@@ -8,6 +9,14 @@ namespace AssignmentComplete
 	{
 		private Vector2 _posisiton;
 		private Texture2D _truck, _ikea, _productBox, _productContainer;
+		private List<IContainer> _products = new List<IContainer>();
+
+		public void CreateProduct()
+		{
+			Random random = new Random();
+			OreContainer ore = new OreContainer (this._productBox, new Vector2(this._posisiton.X + random.Next(-50, 100), this._posisiton.Y + random.Next(-50, 100)), 0, 200);
+			this._products.Add (ore);
+		}
 
 		#region IFactory implementation
 		public Texture2D TruckTexture {
@@ -24,18 +33,21 @@ namespace AssignmentComplete
 
 		public ITruck GetReadyTruck ()
 		{
-			throw new NotImplementedException ();
+			return new Truck (this._posisiton, new Vector2(10, 0), this._truck);
 		}
 
 		public Microsoft.Xna.Framework.Vector2 Position {
 			get {
-				throw new NotImplementedException ();
+				return this._posisiton;
 			}
 		}
 
 		public System.Collections.Generic.List<IContainer> ProductsToShip {
 			get {
-				throw new NotImplementedException ();
+				return this._products;
+			}
+			set {
+				this._products = value;
 			}
 		}
 
@@ -45,7 +57,17 @@ namespace AssignmentComplete
 
 		public void Update (float dt)
 		{
-			//throw new NotImplementedException ();
+			foreach (var product in this._products) {
+				if (product.CurrentAmount < product.MaxCapacity) {
+					product.AddContent (50);
+				} else if(this._products[this._products.Count - 1] == product) {
+					this.CreateProduct ();
+					break;
+				}
+			}
+			if (this._products.Count == 0) {
+				this.CreateProduct ();
+			}
 		}
 
 		#endregion
@@ -56,8 +78,15 @@ namespace AssignmentComplete
 		{
 			spriteBatch.Draw (this._ikea, this._posisiton, null, Color.White, 0f, Vector2.Zero, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
 			spriteBatch.Draw (this._truck, new Vector2(420, 320), null, Color.White, 0f, Vector2.Zero, new Vector2(0.3f, 0.3f), SpriteEffects.FlipHorizontally, 0f);
-			spriteBatch.Draw (this._productContainer, new Vector2(500, 320), null, Color.White, 0f, Vector2.Zero, new Vector2(0.2f, 0.2f), SpriteEffects.FlipHorizontally, 0f);
 			spriteBatch.Draw (this._productBox, new Vector2(750, 350), null, Color.White, 0f, Vector2.Zero, new Vector2(0.2f, 0.2f), SpriteEffects.FlipHorizontally, 0f);
+
+			if (this._products.Count > 0) {
+				foreach (var product in this._products) {
+					if (product.CurrentAmount == product.MaxCapacity) {
+						product.Draw (spriteBatch);
+					}
+				}
+			}
 		}
 
 		#endregion

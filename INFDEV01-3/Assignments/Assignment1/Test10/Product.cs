@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Test10
+namespace AssignmentComplete
 {
 	public class Product
 	{
