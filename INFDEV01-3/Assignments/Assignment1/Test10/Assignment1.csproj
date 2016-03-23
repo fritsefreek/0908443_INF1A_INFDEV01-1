@@ -62,6 +62,7 @@
     <Compile Include="AddTruckFromFactory.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="OreContainer.cs" />
+    <Compile Include="Ore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

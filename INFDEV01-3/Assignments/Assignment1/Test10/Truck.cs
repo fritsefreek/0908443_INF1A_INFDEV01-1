@@ -74,7 +74,9 @@ namespace AssignmentComplete
 			}
 
 			spriteBatch.Draw (this._texture, this._posisiton, null, Color.White, 0f, Vector2.Zero, new Vector2(0.3f, 0.3f), spriteEffect, 0f);
-			this._container.Draw (spriteBatch);
+			if (this.Container != null) {
+				this._container.Draw (spriteBatch);
+			}
 		}
 
 		#endregion

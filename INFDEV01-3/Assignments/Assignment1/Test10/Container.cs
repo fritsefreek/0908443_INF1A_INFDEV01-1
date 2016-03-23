@@ -53,7 +53,7 @@ namespace AssignmentComplete
 
 		public void Draw (SpriteBatch spriteBatch)
 		{
-			spriteBatch.Draw (this._texture, this._position, null, Color.White, 0f, Vector2.Zero, new Vector2(0.3f, 0.3f), SpriteEffects.None, 0f);
+			spriteBatch.Draw (this._texture, new Vector2(this._position.X + 0, this._position.Y), null, Color.White, 0f, Vector2.Zero, new Vector2(0.2f, 0.2f), SpriteEffects.None, 0f);
 		}
 
 		#endregion

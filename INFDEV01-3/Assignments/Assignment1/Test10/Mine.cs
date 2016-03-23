@@ -1,103 +1,114 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace AssignmentComplete
 {
-	public class Mine : IFactory 
+	class Mine : IFactory
 	{
-		private Vector2 _posisiton;
-		private Texture2D _truck, _mine, _mineCard, _oreContainer;
-		private List<IContainer> _products = new List<IContainer>();
 
-
-		public void CreateProduct()
+		class AddOreBoxToMine : IAction
 		{
-			Random random = new Random();
-			OreContainer ore = new OreContainer (this._mineCard, new Vector2(this._posisiton.X + random.Next(-50, 100), this._posisiton.Y + random.Next(-50, 100)), 0, 200);
-			this._products.Add (ore);
-		}
-
-		#region IFactory implementation
-		public Texture2D TruckTexture {
-			get {
-				return this._truck;
+			Mine mine;
+			public AddOreBoxToMine(Mine mine)
+			{
+				this.mine = mine;
 			}
-		}
-
-		public Texture2D ContainerTexture {
-			get {
-				return this._oreContainer;
+			public void Run()
+			{
+				mine.ProductsToShip.Add(CreateOreBox(mine.Position + new Vector2(0, 40 + -30 * mine.ProductsToShip.Count)));
 			}
-		}
+			Ore CreateOreBox(Vector2 position)
+			{
+				var box = new Ore(100, mine.oreBox);
+				box.Position = position;
+				return box;
+			}
+		} 
 			
-		public ITruck GetReadyTruck ()
+
+		Texture2D mine, oreContainer, oreBox, truckTexture;
+		List<IStateMachine> processes;
+		ITruck waitingTruck;
+		bool isTruckReady = true;
+		Vector2 position;
+		List<IContainer> productsToShip;
+
+		public Mine(Vector2 position, Texture2D truck_texture, Texture2D mine, Texture2D ore_box, Texture2D ore_container)
 		{
-			return new Truck (this._posisiton, new Vector2(10, 0), this._truck);
+			processes = new List<IStateMachine>();
+			ProductsToShip = new List<IContainer>();
+			this.mine = mine;
+			this.truckTexture = truck_texture;
+			this.oreContainer = ore_container;
+			this.oreBox = ore_box;
+			this.position = position;
+
+
+			ITruck newTruck = new Truck (new Vector2(position.X + 150, position.Y + 15), new Vector2(50, 0), truckTexture);
+			this.waitingTruck = newTruck;
+
+			processes.Add(
+				new Repeat(new Seq(new Timer(1.0f),
+					new Call(new AddOreBoxToMine(this)))));
 		}
 
-		public Microsoft.Xna.Framework.Vector2 Position {
+
+		public ITruck GetReadyTruck()
+		{
+			IContainer _container = new Container (100, 200, new Vector2(position.X + 170, position.Y + 15), oreContainer);
+			ITruck readyTruck = this.waitingTruck;
+			waitingTruck.AddContainer (_container);
+
+			ITruck newTruck = new Truck (new Vector2(position.X + 150, position.Y + 15), new Vector2(50, 0), truckTexture);
+			waitingTruck = newTruck;
+
+			return readyTruck;
+		}
+
+
+		public Boolean IsTruckReady {
 			get {
-				return this._posisiton;
+				return isTruckReady;
 			}
 		}
-
-		public System.Collections.Generic.List<IContainer> ProductsToShip {
-			get {
-				return this._products;
-			}
-			set {
-				this._products = value;
-			}
-		}
-
-		#endregion
-
-		#region IUpdateable implementation
-
-		public void Update (float dt)
+		public Vector2 Position
 		{
-			foreach (var product in this._products) {
-				if (product.CurrentAmount < product.MaxCapacity) {
-					product.AddContent (50);
-				} else if(this._products[this._products.Count - 1] == product) {
-					this.CreateProduct ();
-					break;
-				}
-			}
-			if (this._products.Count == 0) {
-				this.CreateProduct ();
+			get
+			{
+				return position;
 			}
 		}
-				
-		#endregion
-
-		#region IDrawable implementation
-
-		public void Draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+		public List<IContainer> ProductsToShip
 		{
-			spriteBatch.Draw (this._mine, this._posisiton, null, Color.White, 0f, Vector2.Zero, new Vector2 (0.5f, 0.5f), SpriteEffects.None, 0f);
-			spriteBatch.Draw (this._truck, new Vector2 (170, 50), null, Color.White, 0f, Vector2.Zero, new Vector2 (0.3f, 0.3f), SpriteEffects.None, 0f);
-
-			if (this._products.Count > 0) {
-				foreach (var product in this._products) {
-					if (product.CurrentAmount == product.MaxCapacity) {
-						product.Draw (spriteBatch);
-					}
-				}
+			get
+			{
+				return productsToShip;
+			}
+			set
+			{
+				productsToShip = value;
 			}
 		}
-		#endregion
-
-		public Mine (Vector2 posisiton, Texture2D truck, Texture2D mine, Texture2D mineCard, Texture2D oreContainer)
+		public void Draw(SpriteBatch spriteBatch)
 		{
-			this._posisiton = posisiton;
-			this._truck = truck;
-			this._mine = mine;
-			this._mineCard = mineCard;
-			this._oreContainer = oreContainer;
+			foreach (var cart in ProductsToShip)
+			{
+				cart.Draw(spriteBatch);
+			}
+			spriteBatch.Draw (mine, position, null, Color.White, 0f, Vector2.Zero, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
+			waitingTruck.Draw (spriteBatch);
 		}
+		public void Update(float dt)
+		{
+			foreach (var process in processes)
+			{
+				process.Update(dt);
+			}
+		}
+
 	}
 }
-
