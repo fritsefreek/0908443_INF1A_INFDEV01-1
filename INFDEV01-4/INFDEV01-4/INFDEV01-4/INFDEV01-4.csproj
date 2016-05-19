@@ -35,11 +35,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="INumber.cs" />
-    <Compile Include="INumberVisitor.cs" />
-    <Compile Include="MyFloat.cs" />
-    <Compile Include="MyInt.cs" />
-    <Compile Include="NumberVisitor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
