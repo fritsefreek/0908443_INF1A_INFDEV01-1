@@ -11,7 +11,8 @@ namespace INFDEV014
 		static void Main(string[] args)
 		{
 			//new exercise111 ();
-			new exercise112 ();
+			//new exercise112 ();
+			new exercise113 ();
 		}
 	}
 }
