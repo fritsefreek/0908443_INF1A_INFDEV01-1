@@ -4,24 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AssigmentGUI
 {
-	public class Label : Microsoft.Xna.Framework.Game, IControl
+	public class Label: IControl
 	{
 		public Vector2 position;
 		public Vector2 size;
-
-		SpriteFont Font1;
-		Vector2 FontPos;
-		GraphicsDeviceManager graphics;
-		SpriteBatch spriteBatch;
-
-
-		public Label()
-		{
-			spriteBatch = new SpriteBatch(GraphicsDevice);
-			Font1 = Content.Load<SpriteFont>("Courier New");           
-			FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
-		}
-			
+	
 
 		#region IControl implementation
 
@@ -30,22 +17,13 @@ namespace AssigmentGUI
 			throw new NotImplementedException ();
 		}
 
-		public void Draw ()
+		public void Draw (SpriteBatch spritebatch, SpriteFont font)
 		{
-			GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			spriteBatch.Begin();
-
-			// Draw Hello World
 			string output = "Hello World";
+			Vector2 FontOrigin = font.MeasureString(output) / 2;
 
-			// Find the center of the string
-			Vector2 FontOrigin = Font1.MeasureString(output) / 2;
-			// Draw the string
-			spriteBatch.DrawString(Font1, output, FontPos, Color.LightGreen, 0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
-
-			spriteBatch.End();
-		
+			spritebatch.DrawString(font, output, position, Color.LightGreen, 0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
 		}
 
 		public Vector2 Position {

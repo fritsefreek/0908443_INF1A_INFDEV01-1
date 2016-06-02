@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AssigmentGUI
 {
@@ -8,6 +9,6 @@ namespace AssigmentGUI
 		Vector2 Size { get; set; }
 
 		void Update();
-		void Draw();
+		void Draw(SpriteBatch spritebatch, SpriteFont font);
 	}
 }
