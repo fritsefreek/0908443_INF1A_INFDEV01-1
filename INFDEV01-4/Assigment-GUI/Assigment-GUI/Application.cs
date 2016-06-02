@@ -33,7 +33,7 @@ namespace AssigmentGUI
 		protected override void LoadContent()
 		{
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-			Font1 = Content.Load<SpriteFont>("Courier New");
+			Font1 = Content.Load<SpriteFont>("Arial");
 			FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height / 2);
 		}
 
