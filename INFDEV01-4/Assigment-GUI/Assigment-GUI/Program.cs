@@ -1,12 +1,16 @@
 ﻿using System;
 
+
 namespace AssigmentGUI
 {
 	class MainClass
 	{
-		public static void Main (string[] args)
+		public static void Main (string[] args) 
 		{
-			Console.WriteLine ("Hello World!");
+			using (Application app = new Application())
+			{
+				app.Run();
+			}
 		}
 	}
 }
