@@ -10,5 +10,6 @@ namespace AssigmentGUI
 
 		void Update();
 		void Draw(SpriteBatch spritebatch, SpriteFont font);
+		void Visit(IControlVisitor IControlVisitor);
 	}
 }

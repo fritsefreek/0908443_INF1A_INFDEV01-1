@@ -21,9 +21,10 @@ namespace AssigmentGUI
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
-			Vector2 position = new Vector2 (200, 20);
-			this.testlabel = new Label {position = position, size = position};
+
+			this.testlabel = new Label {position = new Vector2 (200, 20), size = new Vector2 (2, 2)};
 		}
+			
 
 		protected override void LoadContent()
 		{
@@ -39,13 +40,18 @@ namespace AssigmentGUI
 		
 			base.Update(gameTime);
 		}
-			
+	
+
 		protected override void Draw(GameTime gameTime)
 		{
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			spriteBatch.Begin();
 			this.testlabel.Draw(spriteBatch, this.font);
+
+			//ControlVisitor controlVisitor = new ControlVisitor();
+			//controlVisitor.onLabel(this.testlabel, spriteBatch, this.font);
+
 			spriteBatch.End();
 
 			base.Draw(gameTime);

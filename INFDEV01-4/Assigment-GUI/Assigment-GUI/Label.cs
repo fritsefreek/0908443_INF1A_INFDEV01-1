@@ -9,7 +9,6 @@ namespace AssigmentGUI
 		public Vector2 position;
 		public Vector2 size;
 	
-
 		#region IControl implementation
 
 		public void Update ()
@@ -19,11 +18,15 @@ namespace AssigmentGUI
 
 		public void Draw (SpriteBatch spritebatch, SpriteFont font)
 		{
-
 			string output = "Hello World";
 			Vector2 FontOrigin = font.MeasureString(output) / 2;
 
-			spritebatch.DrawString(font, output, position, Color.LightGreen, 0, FontOrigin, 1.0f, SpriteEffects.None, 0.5f);
+			spritebatch.DrawString(font, output, position, Color.LightGreen, 0, FontOrigin, size, SpriteEffects.None, 0.5f);
+		}
+
+		public void Visit(IControlVisitor IControlVisitor)
+		{
+			IControlVisitor.onLabel (this);
 		}
 
 		public Vector2 Position {
@@ -45,6 +48,8 @@ namespace AssigmentGUI
 		}
 
 		#endregion
+
+
 	}
 }
 

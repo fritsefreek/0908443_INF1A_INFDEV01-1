@@ -47,6 +47,8 @@
     <Compile Include="IControl.cs" />
     <Compile Include="Label.cs" />
     <Compile Include="Application.cs" />
+    <Compile Include="Patterns\Visitor\ControlVisitor.cs" />
+    <Compile Include="Patterns\Visitor\IControlVisitor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -57,5 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
+    <Folder Include="Patterns\" />
+    <Folder Include="Patterns\Visitor\" />
   </ItemGroup>
 </Project>
