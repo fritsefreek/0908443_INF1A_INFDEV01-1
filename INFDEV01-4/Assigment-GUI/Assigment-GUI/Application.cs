@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -17,12 +18,24 @@ namespace AssigmentGUI
 		Label testlabel;
 		SpriteFont font;
 
+
+
+
 		public Application()
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 
+
+
+			ControlFactory someControl = new ControlFactory ();
+			List<IControl> someControlList = new List<IControl>();
+
+			someControlList.Add (someControl.Create("label"));
+
 			this.testlabel = new Label {position = new Vector2 (200, 20), size = new Vector2 (2, 2)};
+
+			
 		}
 			
 

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AssigmentGUI
 {
-	interface IControl {
+	public interface IControl {
 		Vector2 Position { get; set;}
 		Vector2 Size { get; set; }
 

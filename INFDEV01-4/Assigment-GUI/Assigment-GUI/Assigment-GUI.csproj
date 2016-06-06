@@ -49,6 +49,7 @@
     <Compile Include="Application.cs" />
     <Compile Include="Patterns\Visitor\ControlVisitor.cs" />
     <Compile Include="Patterns\Visitor\IControlVisitor.cs" />
+    <Compile Include="Patterns\Factory\ControlFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -61,5 +62,6 @@
     <Folder Include="Content\" />
     <Folder Include="Patterns\" />
     <Folder Include="Patterns\Visitor\" />
+    <Folder Include="Patterns\Factory\" />
   </ItemGroup>
 </Project>
