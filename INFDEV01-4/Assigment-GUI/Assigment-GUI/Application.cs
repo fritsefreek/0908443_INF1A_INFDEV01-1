@@ -15,10 +15,9 @@ namespace AssigmentGUI
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-		Label testlabel;
 		SpriteFont font;
-
-
+		Dictionary<string, Texture2D> buttonStates = new Dictionary<string, Texture2D>();
+		List<IControl> controlList = new List<IControl>();
 
 
 		public Application()
@@ -26,16 +25,10 @@ namespace AssigmentGUI
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 
-
-
 			ControlFactory someControl = new ControlFactory ();
-			List<IControl> someControlList = new List<IControl>();
+			this.controlList.Add (someControl.Create("label-left"));
+			this.controlList.Add (someControl.Create("label-right"));
 
-			someControlList.Add (someControl.Create("label"));
-
-			this.testlabel = new Label {position = new Vector2 (200, 20), size = new Vector2 (2, 2)};
-
-			
 		}
 			
 
@@ -43,6 +36,7 @@ namespace AssigmentGUI
 		{
 			spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
 			this.font = Content.Load<SpriteFont>("Arial");
+			this.buttonStates.Add ("normal", Content.Load<Texture2D>("ButtonNormal.png"));
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -60,7 +54,10 @@ namespace AssigmentGUI
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
 			spriteBatch.Begin();
-			this.testlabel.Draw(spriteBatch, this.font);
+
+			foreach(IControl control in this.controlList) {
+				control.Draw(spriteBatch, this.font, this.buttonStates);
+			}
 
 			//ControlVisitor controlVisitor = new ControlVisitor();
 			//controlVisitor.onLabel(this.testlabel, spriteBatch, this.font);

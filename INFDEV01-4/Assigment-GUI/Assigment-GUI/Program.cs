@@ -3,7 +3,7 @@
 
 /*
  *	- Visitor: Detect if IControl is an label or button
- *  - Factory: Create buttons with borders / without borders
+ *  - Factory: Create buttons and labels
  *  - Iterator: Iterrate trough a list of buttons/labels
  *  - Adapter: ?
  * 	- Decorater: To change the background collor of a button  

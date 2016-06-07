@@ -5,11 +5,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AssigmentGUI
 {
-	public class Label: IControl
+	public class Button: IControl
 	{
 		public Vector2 position;
 		public Vector2 size;
 	
+
 		#region IControl implementation
 
 		public void Update ()
@@ -19,15 +20,12 @@ namespace AssigmentGUI
 
 		public void Draw (SpriteBatch spritebatch, SpriteFont font, Dictionary<string, Texture2D> buttonStates)
 		{
-			string output = "Hello World";
-			Vector2 FontOrigin = font.MeasureString(output) / 2;
-
-			spritebatch.DrawString(font, output, position, Color.LightGreen, 0, FontOrigin, size, SpriteEffects.None, 0.5f);
+			spritebatch.Draw (buttonStates["normal"], position, null, Color.White, 0f, Vector2.Zero, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
 		}
 
 		public void Visit(IControlVisitor IControlVisitor)
 		{
-			IControlVisitor.OnLabel (this);
+			IControlVisitor.OnButton (this);
 		}
 
 		public Vector2 Position {

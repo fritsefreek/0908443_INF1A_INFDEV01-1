@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -9,7 +10,7 @@ namespace AssigmentGUI
 		Vector2 Size { get; set; }
 
 		void Update();
-		void Draw(SpriteBatch spritebatch, SpriteFont font);
+		void Draw(SpriteBatch spritebatch, SpriteFont font, Dictionary<string, Texture2D> buttonStates);
 		void Visit(IControlVisitor IControlVisitor);
 	}
 }

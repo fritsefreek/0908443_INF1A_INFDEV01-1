@@ -50,11 +50,25 @@
     <Compile Include="Patterns\Visitor\ControlVisitor.cs" />
     <Compile Include="Patterns\Visitor\IControlVisitor.cs" />
     <Compile Include="Patterns\Factory\ControlFactory.cs" />
+    <Compile Include="Patterns\Iterator\Iterator.cs" />
+    <Compile Include="Button.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Content\Arial.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\ButtonPressed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\ButtonNormal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\ButtonHover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\ButtonDisabled.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -63,5 +77,6 @@
     <Folder Include="Patterns\" />
     <Folder Include="Patterns\Visitor\" />
     <Folder Include="Patterns\Factory\" />
+    <Folder Include="Patterns\Iterator\" />
   </ItemGroup>
 </Project>
