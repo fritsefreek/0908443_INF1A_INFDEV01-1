@@ -18,6 +18,10 @@ namespace AssigmentGUI
 			if (controlType == "label-right") {
 				return new Label {position = new Vector2 (500, 20), size = new Vector2 (2, 2)};
 			}
+
+			if (controlType == "button-normal") {
+				return new Button {position = new Vector2 (200, 200), size = new Vector2(1, 1)};
+			}
 			return null;
 		
 			

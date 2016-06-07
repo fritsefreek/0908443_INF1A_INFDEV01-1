@@ -20,7 +20,7 @@ namespace AssigmentGUI
 
 		public void Draw (SpriteBatch spritebatch, SpriteFont font, Dictionary<string, Texture2D> buttonStates)
 		{
-			spritebatch.Draw (buttonStates["normal"], position, null, Color.White, 0f, Vector2.Zero, new Vector2(0.5f, 0.5f), SpriteEffects.None, 0f);
+			spritebatch.Draw (buttonStates["normal"], position, null, Color.White, 0f, Vector2.Zero, size, SpriteEffects.None, 0f);
 		}
 
 		public void Visit(IControlVisitor IControlVisitor)

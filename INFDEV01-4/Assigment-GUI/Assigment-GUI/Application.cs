@@ -28,6 +28,7 @@ namespace AssigmentGUI
 			ControlFactory someControl = new ControlFactory ();
 			this.controlList.Add (someControl.Create("label-left"));
 			this.controlList.Add (someControl.Create("label-right"));
+			this.controlList.Add (someControl.Create ("button-normal"));
 
 		}
 			
