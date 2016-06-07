@@ -27,7 +27,7 @@ namespace AssigmentGUI
 
 		public void Visit(IControlVisitor IControlVisitor)
 		{
-			IControlVisitor.OnLabel (this);
+			IControlVisitor.OnIControl (this);
 		}
 
 		public Vector2 Position {

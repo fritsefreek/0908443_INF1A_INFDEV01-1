@@ -8,16 +8,11 @@ namespace AssigmentGUI
 	{
 		#region IControlVisitor implementation
 
-		void IControlVisitor.OnLabel (Label Label)
+		public bool OnIControl (IControl Control)
 		{
-			Console.Write ("I found a label");
-			//Label.Draw (spritebatch, font)
+			return true;
 		}
 
-		void IControlVisitor.OnButton(Button Button)
-		{
-			Console.Write ("I found a button");
-		}
 
 		#endregion
 

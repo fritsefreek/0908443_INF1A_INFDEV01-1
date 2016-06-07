@@ -24,12 +24,12 @@ namespace AssigmentGUI
 		{
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
+			this.IsMouseVisible = true;
 
 			ControlFactory someControl = new ControlFactory ();
 			this.controlList.Add (someControl.Create("label-left"));
 			this.controlList.Add (someControl.Create("label-right"));
 			this.controlList.Add (someControl.Create ("button-normal"));
-
 		}
 			
 
@@ -46,6 +46,8 @@ namespace AssigmentGUI
 				this.Exit ();
 			}
 		
+			MouseState state = Mouse.GetState();
+			System.Console.WriteLine (state.X );
 			base.Update(gameTime);
 		}
 	
@@ -53,18 +55,18 @@ namespace AssigmentGUI
 		protected override void Draw(GameTime gameTime)
 		{
 			GraphicsDevice.Clear(Color.CornflowerBlue);
-
 			spriteBatch.Begin();
 
+
 			foreach(IControl control in this.controlList) {
-				control.Draw(spriteBatch, this.font, this.buttonStates);
+				ControlVisitor controlVisitor = new ControlVisitor();
+				if (controlVisitor.OnIControl (control)) {
+					control.Draw(spriteBatch, this.font, this.buttonStates);
+				}
 			}
 
-			//ControlVisitor controlVisitor = new ControlVisitor();
-			//controlVisitor.onLabel(this.testlabel, spriteBatch, this.font);
 
 			spriteBatch.End();
-
 			base.Draw(gameTime);
 		}
 	}
