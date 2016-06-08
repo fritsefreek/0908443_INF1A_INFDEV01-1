@@ -3,9 +3,8 @@
 
 namespace AssigmentGUI
 {
-	public interface Iterator {
-		bool hasNext();
-		IControl next();
+	public interface Iterator<T> {
+		IOption<T> GetNext();
 	}
 }
 

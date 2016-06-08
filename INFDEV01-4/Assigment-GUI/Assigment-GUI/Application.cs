@@ -57,6 +57,9 @@ namespace AssigmentGUI
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
 
+			//ListIterator<IControl> test = new ListIterator<> (this.controlList);
+			Iterator<IControl> list = new ListIterator<IControl> (this.controlList);
+
 
 			foreach(IControl control in this.controlList) {
 				ControlVisitor controlVisitor = new ControlVisitor();

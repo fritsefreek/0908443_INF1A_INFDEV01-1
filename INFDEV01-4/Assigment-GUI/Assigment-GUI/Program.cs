@@ -2,7 +2,7 @@
 
 
 /*
- *	- Visitor: Detect if IControl is an label or button
+ *	- Visitor: Detect if control is of type IControl
  *  - Factory: Create buttons and labels
  *  - Iterator: Iterrate trough a list of buttons/labels
  *  - Adapter: ?

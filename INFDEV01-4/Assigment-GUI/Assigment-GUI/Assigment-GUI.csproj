@@ -52,6 +52,8 @@
     <Compile Include="Patterns\Factory\ControlFactory.cs" />
     <Compile Include="Patterns\Iterator\Iterator.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="IOption.cs" />
+    <Compile Include="Patterns\Iterator\ListIterator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
