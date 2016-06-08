@@ -6,20 +6,20 @@ namespace AssigmentGUI
 	public class ListIterator<T>: Iterator<T> 
 	{
 		private List<T> list;
-		private int index = 0;
+		private int index = -1;
+		public T Current;
 
 		public ListIterator(List<T> list) {
 			this.list = list;
 		}
 
 		public IOption<T> GetNext() {
-			if (index > list.Count) {
+			this.index += 1;
+			if (index == list.Count) {
 				return new None<T> ();
 			} else {
-				this.index += 1;
-				return new Some<T> (this.list[this.index]);
+				return new Some<T> (this.list [this.index]);
 			}
 		}
 	}
 }
-

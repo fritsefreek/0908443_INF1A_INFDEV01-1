@@ -10,6 +10,8 @@ namespace AssigmentGUI
 
 	public interface IOption<T> { 
 		U Visit<U>(OptionVisitor<T, U> visitor); 
+		T getValue();
+		Boolean isNone();
 	}
 
 	class Some<T> : IOption<T>
@@ -20,6 +22,14 @@ namespace AssigmentGUI
 		{
 			return visitor.onSome(this.value);
 		}
+
+		public T getValue() {
+			return this.value;
+		}
+
+		public Boolean isNone() {
+			return false;
+		}
 	}
 
 	class None<T> : IOption<T>
@@ -28,5 +38,14 @@ namespace AssigmentGUI
 		{
 			return visitor.onNone();
 		}
+
+		public T getValue(){
+			throw new NotImplementedException();
+		}
+
+		public Boolean isNone() {
+			return true;
+		}
+
 	}
 }

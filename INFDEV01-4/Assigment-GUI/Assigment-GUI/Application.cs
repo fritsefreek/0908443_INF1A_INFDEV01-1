@@ -57,12 +57,27 @@ namespace AssigmentGUI
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
 
-			//ListIterator<IControl> test = new ListIterator<> (this.controlList);
-			Iterator<IControl> list = new ListIterator<IControl> (this.controlList);
+			List<string> eenList = new List<string> ();
+			eenList.Add ("label-left");
+			eenList.Add ("button-normal");
 
+
+			Iterator<IControl> list = new ListIterator<IControl> (this.controlList);
+			IOption<IControl> test = list.GetNext ();
+
+
+			while (test is Some<IControl>) {
+				test = list.GetNext ();
+
+				var ietss = test.getValue ();
+				System.Console.Write (ietss.Position.X);
+			}
+
+
+			ControlVisitor controlVisitor = new ControlVisitor();
 
 			foreach(IControl control in this.controlList) {
-				ControlVisitor controlVisitor = new ControlVisitor();
+				//controlListControlVisitor controlVisitor = new ControlVisitor();
 				if (controlVisitor.OnIControl (control)) {
 					control.Draw(spriteBatch, this.font, this.buttonStates);
 				}

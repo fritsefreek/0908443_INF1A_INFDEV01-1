@@ -50,10 +50,11 @@
     <Compile Include="Patterns\Visitor\ControlVisitor.cs" />
     <Compile Include="Patterns\Visitor\IControlVisitor.cs" />
     <Compile Include="Patterns\Factory\ControlFactory.cs" />
-    <Compile Include="Patterns\Iterator\Iterator.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="IOption.cs" />
     <Compile Include="Patterns\Iterator\ListIterator.cs" />
+    <Compile Include="Patterns\Iterator\TraditionalIterator.cs" />
+    <Compile Include="Patterns\Iterator\Iterator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
