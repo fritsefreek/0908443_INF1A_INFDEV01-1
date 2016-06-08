@@ -10,6 +10,12 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AssigmentGUI
 {
+	public class Customer
+	{
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public string Address { get; set; }
+	}
 
 	public class Application : Game
 	{
@@ -30,6 +36,11 @@ namespace AssigmentGUI
 			this.controlList.Add (someControl.Create("label-left"));
 			this.controlList.Add (someControl.Create("label-right"));
 			this.controlList.Add (someControl.Create ("button-normal"));
+
+
+			IControl fb = new FancyButton(someControl.Create ("button-normal"));
+			this.controlList.Add (fb);
+
 		}
 			
 
@@ -57,33 +68,21 @@ namespace AssigmentGUI
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
 
-			List<string> eenList = new List<string> ();
-			eenList.Add ("label-left");
-			eenList.Add ("button-normal");
 
-
-			Iterator<IControl> list = new ListIterator<IControl> (this.controlList);
-			IOption<IControl> test = list.GetNext ();
-
-
-			while (test is Some<IControl>) {
-				test = list.GetNext ();
-
-				var ietss = test.getValue ();
-				System.Console.Write (ietss.Position.X);
-			}
-
-
+			Iterator<IControl> IteratorList = new ListIterator<IControl> (this.controlList);
+			IOption<IControl> ListItem = IteratorList.GetNext ();
 			ControlVisitor controlVisitor = new ControlVisitor();
 
-			foreach(IControl control in this.controlList) {
-				//controlListControlVisitor controlVisitor = new ControlVisitor();
+			while (ListItem is Some<IControl>) {
+				IControl control = ListItem.getValue ();
 				if (controlVisitor.OnIControl (control)) {
-					control.Draw(spriteBatch, this.font, this.buttonStates);
+					control.Draw (spriteBatch, this.font, this.buttonStates);
 				}
+
+				ListItem = IteratorList.GetNext ();
 			}
-
-
+				
+		
 			spriteBatch.End();
 			base.Draw(gameTime);
 		}
