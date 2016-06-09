@@ -10,7 +10,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AssigmentGUI
 {
-
 	public class Application : Game
 	{
 		GraphicsDeviceManager graphics;
@@ -18,7 +17,6 @@ namespace AssigmentGUI
 		SpriteFont font;
 		Dictionary<string, Texture2D> buttonStates = new Dictionary<string, Texture2D>();
 		List<IControl> controlList = new List<IControl>();
-
 
 		public Application()
 		{
@@ -31,16 +29,16 @@ namespace AssigmentGUI
 			this.controlList.Add (someControl.Create("label-right"));
 			this.controlList.Add (someControl.Create ("button-normal"));
 
-			IControl fb = new FancyButton(someControl.Create("button-normal"));
-			this.controlList.Add(fb);
+			IControl fancybutton = new FancyButton(someControl.Create("button-normal"));
+			this.controlList.Add(fancybutton);
 		}
-			
 
 		protected override void LoadContent()
 		{
 			spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
 			this.font = Content.Load<SpriteFont>("Arial");
 			this.buttonStates.Add ("normal", Content.Load<Texture2D>("ButtonNormal.png"));
+			this.buttonStates.Add("hover", Content.Load<Texture2D>("ButtonHover.png"));
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -51,9 +49,9 @@ namespace AssigmentGUI
 		
 			MouseState state = Mouse.GetState();
 			System.Console.WriteLine (state.X );
+
 			base.Update(gameTime);
 		}
-	
 
 		protected override void Draw(GameTime gameTime)
 		{
@@ -66,12 +64,9 @@ namespace AssigmentGUI
 
 			while (ListItem is Some<IControl>) {
 				IControl control = ListItem.getValue();
-				if (controlVisitor.OnIControl(control)) {
-					control.Draw(spriteBatch, this.font, this.buttonStates);
-				}
+				control.Draw(spriteBatch, this.font, this.buttonStates);
 				ListItem = IteratorList.GetNext();
 			}
-
 
 			spriteBatch.End();
 			base.Draw(gameTime);

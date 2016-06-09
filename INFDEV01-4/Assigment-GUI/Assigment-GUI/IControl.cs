@@ -8,6 +8,7 @@ namespace AssigmentGUI
 	public interface IControl {
 		Vector2 Position { get; set;}
 		Vector2 Size { get; set; }
+		string Texture { get; set; }
 
 		void Update();
 		void Draw(SpriteBatch spritebatch, SpriteFont font, Dictionary<string, Texture2D> buttonStates);

@@ -4,7 +4,8 @@ namespace AssigmentGUI
 {
 	public interface IControlVisitor
 	{
-		bool OnIControl(IControl Control);
+		bool OnButton(Button Button);
+		bool OnLabel(Label Label);
 	}
 }
 

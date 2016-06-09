@@ -9,6 +9,7 @@ namespace AssigmentGUI
 	{
 		public Vector2 position;
 		public Vector2 size;
+		public string texture;
 	
 		#region IControl implementation
 
@@ -27,7 +28,7 @@ namespace AssigmentGUI
 
 		public void Visit(IControlVisitor IControlVisitor)
 		{
-			IControlVisitor.OnIControl (this);
+			IControlVisitor.OnLabel (this);
 		}
 
 		public Vector2 Position {
@@ -45,6 +46,18 @@ namespace AssigmentGUI
 			}
 			set {
 				this.size = value;
+			}
+		}
+
+		public string Texture
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+			set
+			{
+				throw new NotImplementedException();
 			}
 		}
 

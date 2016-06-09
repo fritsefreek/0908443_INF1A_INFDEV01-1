@@ -3,11 +3,12 @@ using Microsoft.Xna.Framework;
 
 namespace AssigmentGUI
 {
-	class FancyButton : Decorator
+	class FancyButton : MakeFancyDecorator
 	{
 		public FancyButton(IControl baseComponent): base(baseComponent)
 		{
-			baseComponent.Position = new Vector2 (100, 100);
+			baseComponent.Texture = "hover";
+			baseComponent.Position = new Vector2(100, 300);
 		}
 	}
 }

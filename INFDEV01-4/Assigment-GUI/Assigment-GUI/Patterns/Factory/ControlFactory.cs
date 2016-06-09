@@ -20,12 +20,9 @@ namespace AssigmentGUI
 			}
 
 			if (controlType == "button-normal") {
-				return new Button {position = new Vector2 (200, 200), size = new Vector2(1, 1)};
+				return new Button {position = new Vector2 (200, 200), size = new Vector2(1, 1), texture = "normal" };
 			}
 			return null;
-		
-			
 		}
 	}
 }
-

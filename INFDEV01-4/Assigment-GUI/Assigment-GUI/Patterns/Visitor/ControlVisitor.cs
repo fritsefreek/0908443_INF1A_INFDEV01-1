@@ -8,14 +8,16 @@ namespace AssigmentGUI
 	{
 		#region IControlVisitor implementation
 
-		public bool OnIControl (IControl Control)
+		public bool OnButton (Button Button)
 		{
 			return true;
 		}
 
-
+		public bool OnLabel(Label Label)
+		{
+			return true;
+		}
 		#endregion
-
 
 	}
 }

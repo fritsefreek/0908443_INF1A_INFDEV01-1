@@ -9,6 +9,7 @@ namespace AssigmentGUI
 	{
 		public Vector2 position;
 		public Vector2 size;
+		public string texture;
 	
 
 		#region IControl implementation
@@ -20,12 +21,12 @@ namespace AssigmentGUI
 
 		public void Draw (SpriteBatch spritebatch, SpriteFont font, Dictionary<string, Texture2D> buttonStates)
 		{
-			spritebatch.Draw (buttonStates["normal"], position, null, Color.White, 0f, Vector2.Zero, size, SpriteEffects.None, 0f);
+			spritebatch.Draw (buttonStates[this.texture], position, null, Color.White, 0f, Vector2.Zero, size, SpriteEffects.None, 0f);
 		}
 
 		public void Visit(IControlVisitor IControlVisitor)
 		{
-			IControlVisitor.OnIControl (this);
+			IControlVisitor.OnButton (this);
 		}
 
 		public Vector2 Position {
@@ -44,6 +45,19 @@ namespace AssigmentGUI
 			set {
 				this.size = value;
 			}
+		}
+
+		public string Texture
+		{
+			get
+			{
+				return this.texture;
+			}
+			set
+			{
+				this.texture = value;
+			}
+
 		}
 
 		#endregion
