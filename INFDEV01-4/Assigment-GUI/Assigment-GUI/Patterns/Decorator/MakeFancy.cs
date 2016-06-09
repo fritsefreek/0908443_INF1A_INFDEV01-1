@@ -6,10 +6,10 @@ namespace AssigmentGUI
 {
 
 
-	public abstract class Decorator2 : IControl
+	public abstract class Decorator : IControl
 	{
 		IControl m_BaseComponent;
-		protected Decorator2(IControl baseComponent)
+		protected Decorator(IControl baseComponent)
 		{
 			m_BaseComponent = baseComponent;
 		}
@@ -33,10 +33,10 @@ namespace AssigmentGUI
 
 		public Vector2 Position {
 			get {
-				throw new NotImplementedException ();
+				return m_BaseComponent.Position;
 			}
 			set {
-				throw new NotImplementedException ();
+				m_BaseComponent.Position = new Vector2(m_BaseComponent.Position.X + 100, m_BaseComponent.Position.Y);
 			}
 		}
 
@@ -45,8 +45,7 @@ namespace AssigmentGUI
 				return m_BaseComponent.Position;
 			}
 			set {
-				m_BaseComponent.Position = new Vector2(m_BaseComponent.Position.X + 100, m_BaseComponent.Position.Y);
-
+				throw new NotImplementedException();
 			}
 		}
 		#endregion

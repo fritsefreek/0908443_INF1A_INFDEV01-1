@@ -55,7 +55,6 @@
     <Compile Include="Patterns\Iterator\ListIterator.cs" />
     <Compile Include="Patterns\Iterator\TraditionalIterator.cs" />
     <Compile Include="Patterns\Iterator\Iterator.cs" />
-    <Compile Include="Patterns\Decorator\Decorator.cs" />
     <Compile Include="Patterns\Decorator\FancyButton.cs" />
     <Compile Include="Patterns\Decorator\MakeFancy.cs" />
   </ItemGroup>
@@ -84,6 +83,5 @@
     <Folder Include="Patterns\Visitor\" />
     <Folder Include="Patterns\Factory\" />
     <Folder Include="Patterns\Iterator\" />
-    <Folder Include="Patterns\Decorator\" />
   </ItemGroup>
 </Project>

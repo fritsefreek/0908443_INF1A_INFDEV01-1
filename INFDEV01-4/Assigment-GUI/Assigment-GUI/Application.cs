@@ -10,18 +10,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AssigmentGUI
 {
-	
-	public class NaturalList : Iterator<int>
-	{
-		private int current = -1;
-
-		public IOption<int> GetNext()
-		{
-			current++;
-			return new Some<int>(current);
-		}
-
-	}
 
 	public class Application : Game
 	{
@@ -43,13 +31,8 @@ namespace AssigmentGUI
 			this.controlList.Add (someControl.Create("label-right"));
 			this.controlList.Add (someControl.Create ("button-normal"));
 
-
-			IControl fb = new FancyButton<IControl>(someControl.Create ("button-normal"));
-			this.controlList.Add (fb);
-
-	
-		
-
+			IControl fb = new FancyButton(someControl.Create("button-normal"));
+			this.controlList.Add(fb);
 		}
 			
 
@@ -77,21 +60,19 @@ namespace AssigmentGUI
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
 
-
-			Iterator<IControl> IteratorList = new ListIterator<IControl> (this.controlList);
-			IOption<IControl> ListItem = IteratorList.GetNext ();
+			Iterator<IControl> IteratorList = new ListIterator<IControl>(this.controlList);
+			IOption<IControl> ListItem = IteratorList.GetNext();
 			ControlVisitor controlVisitor = new ControlVisitor();
 
 			while (ListItem is Some<IControl>) {
-				IControl control = ListItem.getValue ();
-				if (controlVisitor.OnIControl (control)) {
-					control.Draw (spriteBatch, this.font, this.buttonStates);
+				IControl control = ListItem.getValue();
+				if (controlVisitor.OnIControl(control)) {
+					control.Draw(spriteBatch, this.font, this.buttonStates);
 				}
-
-				ListItem = IteratorList.GetNext ();
+				ListItem = IteratorList.GetNext();
 			}
-				
-		
+
+
 			spriteBatch.End();
 			base.Draw(gameTime);
 		}
