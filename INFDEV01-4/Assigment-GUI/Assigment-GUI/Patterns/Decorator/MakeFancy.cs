@@ -6,10 +6,10 @@ namespace AssigmentGUI
 {
 
 
-	public abstract class Decorator : IControl
+	public abstract class Decorator2 : IControl
 	{
 		IControl m_BaseComponent;
-		protected Decorator(IControl baseComponent)
+		protected Decorator2(IControl baseComponent)
 		{
 			m_BaseComponent = baseComponent;
 		}

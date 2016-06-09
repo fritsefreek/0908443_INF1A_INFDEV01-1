@@ -13,6 +13,7 @@ namespace AssigmentGUI
 		T getValue();
 		Boolean isNone();
 	}
+		
 
 	class Some<T> : IOption<T>
 	{

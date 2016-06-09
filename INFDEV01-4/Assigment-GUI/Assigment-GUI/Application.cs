@@ -10,11 +10,17 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AssigmentGUI
 {
-	public class Customer
+	
+	public class NaturalList : Iterator<int>
 	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public string Address { get; set; }
+		private int current = -1;
+
+		public IOption<int> GetNext()
+		{
+			current++;
+			return new Some<int>(current);
+		}
+
 	}
 
 	public class Application : Game
@@ -38,8 +44,11 @@ namespace AssigmentGUI
 			this.controlList.Add (someControl.Create ("button-normal"));
 
 
-			IControl fb = new FancyButton(someControl.Create ("button-normal"));
+			IControl fb = new FancyButton<IControl>(someControl.Create ("button-normal"));
 			this.controlList.Add (fb);
+
+	
+		
 
 		}
 			
