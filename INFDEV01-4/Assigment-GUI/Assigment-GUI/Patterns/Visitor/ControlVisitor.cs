@@ -17,6 +17,11 @@ namespace AssigmentGUI
 		{
 			return true;
 		}
+
+		public bool MakeFancyDecorator(MakeFancyDecorator MakeFancyDecorator)
+		{
+			return true;
+		}
 		#endregion
 
 	}

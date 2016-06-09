@@ -6,6 +6,7 @@ namespace AssigmentGUI
 	{
 		bool OnButton(Button Button);
 		bool OnLabel(Label Label);
+		bool MakeFancyDecorator(MakeFancyDecorator MakeFancyDecorator);
 	}
 }
 

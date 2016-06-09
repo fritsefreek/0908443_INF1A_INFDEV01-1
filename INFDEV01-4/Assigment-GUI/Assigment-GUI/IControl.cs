@@ -12,6 +12,6 @@ namespace AssigmentGUI
 
 		void Update();
 		void Draw(SpriteBatch spritebatch, SpriteFont font, Dictionary<string, Texture2D> buttonStates);
-		void Visit(IControlVisitor IControlVisitor);
+		bool Visit(IControlVisitor IControlVisitor);
 	}
 }

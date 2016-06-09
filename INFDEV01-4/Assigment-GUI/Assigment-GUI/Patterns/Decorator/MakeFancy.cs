@@ -25,9 +25,9 @@ namespace AssigmentGUI
 			spritebatch.Draw (buttonStates[m_BaseComponent.Texture], m_BaseComponent.Position, null, Color.White, 0f, Vector2.Zero, m_BaseComponent.Size, SpriteEffects.None, 0f);
 		}
 
-		public void Visit (IControlVisitor IControlVisitor)
+		public bool Visit(IControlVisitor IControlVisitor)
 		{
-			throw new NotImplementedException ();
+			return IControlVisitor.MakeFancyDecorator(this);
 		}
 
 		public Vector2 Position {

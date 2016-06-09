@@ -24,9 +24,9 @@ namespace AssigmentGUI
 			spritebatch.Draw (buttonStates[this.texture], position, null, Color.White, 0f, Vector2.Zero, size, SpriteEffects.None, 0f);
 		}
 
-		public void Visit(IControlVisitor IControlVisitor)
+		public bool Visit(IControlVisitor IControlVisitor)
 		{
-			IControlVisitor.OnButton (this);
+			return IControlVisitor.OnButton (this);
 		}
 
 		public Vector2 Position {

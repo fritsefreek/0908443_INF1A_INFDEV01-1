@@ -62,9 +62,12 @@ namespace AssigmentGUI
 			IOption<IControl> ListItem = IteratorList.GetNext();
 			ControlVisitor controlVisitor = new ControlVisitor();
 
-			while (ListItem is Some<IControl>) {
+
+			// This should have a vistor that returns a bool
+			while (ListItem.isNone() == false && ListItem.getValue().Visit(controlVisitor)) {
 				IControl control = ListItem.getValue();
 				control.Draw(spriteBatch, this.font, this.buttonStates);
+
 				ListItem = IteratorList.GetNext();
 			}
 

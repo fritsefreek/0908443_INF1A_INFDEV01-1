@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace AssigmentGUI
 {
-	class FancyButton : MakeFancyDecorator
+	public class FancyButton : MakeFancyDecorator
 	{
 		public FancyButton(IControl baseComponent): base(baseComponent)
 		{

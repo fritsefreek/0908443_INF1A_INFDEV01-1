@@ -26,9 +26,9 @@ namespace AssigmentGUI
 			spritebatch.DrawString(font, output, position, Color.LightGreen, 0, FontOrigin, size, SpriteEffects.None, 0.5f);
 		}
 
-		public void Visit(IControlVisitor IControlVisitor)
+		public bool Visit(IControlVisitor IControlVisitor)
 		{
-			IControlVisitor.OnLabel (this);
+			return IControlVisitor.OnLabel (this);
 		}
 
 		public Vector2 Position {
